@@ -19,7 +19,7 @@ describe('ECommerceComponent', () => {
     fixture.detectChanges();
   });
 
-  describe('ECommerceComponent', () => {
+  describe('boundary', () => {
     it('should create the component', () => {
       expect(component).toBeTruthy();
     });
