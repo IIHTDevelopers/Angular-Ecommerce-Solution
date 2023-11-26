@@ -1,0 +1,44 @@
+<h1>List of Products</h1>
+<ul>
+    <li *ngFor="let product of products">
+        Name: {{ product.name }} |
+        Price: {{ product.price }} |
+        Description: {{ product.description }}
+        <button (click)="editProduct(product)">Edit</button>
+        <button (click)="deleteProduct(product)">Delete</button>
+        <button (click)="addToCart(product)">Add to Cart</button>
+    </li>
+</ul>
+<button (click)="toggleForm()">Add Product</button>
+
+<div *ngIf="showForm">
+    <form (ngSubmit)="saveProduct()">
+        <div>
+            <label for="productName">Name</label>
+            <input type="text" id="productName" name="productName" required [(ngModel)]="productName">
+        </div>
+        <div>
+            <label for="productPrice">Price</label>
+            <input type="number" id="productPrice" name="productPrice" required [(ngModel)]="productPrice">
+        </div>
+        <div>
+            <label for="productDescription">Description</label>
+            <textarea id="productDescription" name="productDescription" required
+                [(ngModel)]="productDescription"></textarea>
+        </div>
+        <div>
+            <button type="submit">Save Product</button>
+        </div>
+    </form>
+</div>
+
+<button (click)="showCart()">Show Cart</button>
+<div *ngIf="cartVisible">
+    <h2>Shopping Cart</h2>
+    <ul>
+        <li *ngFor="let cartItem of cart">
+            Name: {{ cartItem.product.name }} | Quantity: {{ cartItem.quantity }}
+        </li>
+    </ul>
+    <button (click)="hideCart()">Hide Cart</button>
+</div>
